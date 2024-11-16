@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGE CALCULATER</title>
+    <link rel="stylesheet" href="ageCalculater.css">
+</head>
+<body>
+    <h1>Age Calculater</h1>
+    <div class="contener">
+        <input type="date" id="input">
+        <button onclick="display()">Calculate</button>
+    </div>
+    <p id="result"></p>
+    <script>
+        function display(){
+            let inpt = document.getElementById("input");
+            let age = document.getElementById("result");
+            let privdate = new Date(inpt.value);
+            let currentdate = new Date();
+            let privday = privdate.getDay();
+            let privmonth = privdate.getMonth() + 1;
+            let privyear = privdate.getFullYear();
+            let cuday = currentdate.getDay();
+            let cumonth = currentdate.getMonth() + 1;
+            let cuyear = currentdate.getFullYear();
+            let d ,m ,y;
+            y = cuyear - privyear;
+            if(cumonth > privmonth){
+                m = cumonth - privmonth;
+            }
+            else{
+                y--;
+                m = 12 + cumonth - privmonth;
+            }
+            if(cuday > privday){
+                d = cuday - privday;
+            }
+            else{
+                m--;
+                d = 30 + cuday - privday;
+            }
+            console.log(d);
+            console.log(m);
+            console.log(y);
+           
+            age.innerHTML = `You are <span>${y}</span> Years,<span>${m}</span> Months and <span>${d}</span> Days Old.`;
+
+        }
+        
+
+    </script>
+</body>
+</html>
